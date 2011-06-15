@@ -18,13 +18,13 @@ DESCRIPTION
 ===========
 
 This is the material accompanying the presentation of part I - Database persistence with Camel from simple to more elaborated.
-It covers the different demo made during the talk and is organised like that :
+It covers the different demo made during the talk and is organized like that :
 
 database = project containing the scripts to create the database in HSQLDB and the jar of the HSQLDB server
 jdbc = maven project for camel-jdbc demo
 sql = idem but for camel-sql component
 jpa = mavemn project containing camel routes for JPA persistence
-sql-spring-persistence = maven projetc with additional examples (not coivered during the webinars) but could be used to test transaction with SQL component
+sql-spring-persistence = maven project with additional examples (not covered during the webinars) but could be used to test transaction with SQL component
 
 
 DATABASE
@@ -54,7 +54,7 @@ To launch each project individually, simply execute the following command in a D
 
 mvn camel:run
 
-Depending in whichproject you are (jdbc, sql or jpa), you will have to copy files
+Depending in which project you are (jdbc, sql or jpa), you will have to copy files
 to allow the file:// endpoint of the camel routes to read the corresponding file (key.txt, keys.txt or csv.txtx) and insert data
 into the database
 
