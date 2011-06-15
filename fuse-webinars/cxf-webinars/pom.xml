@@ -73,7 +73,7 @@
     <module>customer-ws-camel-cxf-provider</module>
     <module>customer-ws-security-client</module>
     <module>customer-ws-secure</module>
-    <module>customer-features</module>
-    
+    <module>customer-rest</module>
+    <module>customer-features</module>    
   </modules>
 </project>

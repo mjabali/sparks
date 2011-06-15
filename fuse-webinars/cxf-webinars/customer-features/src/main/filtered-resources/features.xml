@@ -16,31 +16,49 @@
 
 <features name="customer">
 
-  <repository>mvn:org.apache.servicemix/apache-servicemix/${smx.version}/xml/features</repository>
+  <repository>mvn:org.apache.servicemix/apache-servicemix/${smx-version}/xml/features</repository>
 
-  <feature name="customer-ws-secure" version="1.0.0">
-    <feature version="${cxf.version}">cxf</feature>
-    <feature version="${smx.version}">cxf-osgi</feature>
-    <bundle>mvn:com.fusesource/customer-ws-secure/1.0.0</bundle>
+  <feature name="customer-ws" version="${pom.version}">
+    <feature version="${cxf-version}">cxf</feature>
+    <feature version="${smx-version}">cxf-osgi</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-osgi-bundle/${pom.version}</bundle>
+  </feature>
+  
+  <feature name="customer-rest" version="${pom.version}">
+    <feature version="${cxf-version}">cxf</feature>
+    <feature version="${smx-version}">cxf-osgi</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-rest/${pom.version}</bundle>
+  </feature>  
+  
+  <feature name="customer-ws-client" version="${pom.version}">
+    <feature version="${cxf-version}">cxf</feature>
+    <feature version="${smx-version}">cxf-osgi</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-client/${pom.version}</bundle>
+  </feature>  
+
+  <feature name="customer-ws-secure" version="${pom.version}">
+    <feature version="${cxf-version}">cxf</feature>
+    <feature version="${smx-version}">cxf-osgi</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-secure/${pom.version}</bundle>
   </feature>
 
-  <feature name="customer-ws-camel-cxf-payload" version="1.0.0">
-    <feature version="${camel.version}">camel-cxf</feature>
-    <feature version="${smx.version}">camel-activemq</feature>
-    <feature version="${camel.version}">camel-velocity</feature>
-    <bundle>mvn:com.fusesource/customer-ws-camel-cxf-payload/1.0.0</bundle>
+  <feature name="customer-ws-camel-cxf-payload" version="${pom.version}">
+    <feature version="${camel-version}">camel-cxf</feature>
+    <feature version="${smx-version}">camel-activemq</feature>
+    <feature version="${camel-version}">camel-velocity</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-camel-cxf-payload/${pom.version}</bundle>
   </feature>
 
-  <feature name="customer-ws-camel-cxf-pojo" version="1.0.0">
-    <feature version="${camel.version}">camel-cxf</feature>
-    <bundle>mvn:com.fusesource/customer-ws-camel-cxf-pojo/1.0.0</bundle>
+  <feature name="customer-ws-camel-cxf-pojo" version="${pom.version}">
+    <feature version="${camel-version}">camel-cxf</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-camel-cxf-pojo/${pom.version}</bundle>
   </feature>
 
-  <feature name="customer-ws-camel-cxf-provider" version="1.0.0">
-    <feature version="${camel.version}">camel-cxf</feature>
-    <feature version="${smx.version}">camel-activemq</feature>
-    <feature version="${camel.version}">camel-velocity</feature>
-    <bundle>mvn:com.fusesource/customer-ws-camel-cxf-provider/1.0.0</bundle>
+  <feature name="customer-ws-camel-cxf-provider" version="${pom.version}">
+    <feature version="${camel-version}">camel-cxf</feature>
+    <feature version="${smx-version}">camel-activemq</feature>
+    <feature version="${camel-version}">camel-velocity</feature>
+    <bundle>mvn:org.fusesource.sparks.fuse-webinars.cxf-webinars/customer-ws-camel-cxf-provider/${pom.version}</bundle>
   </feature>
 
 </features>

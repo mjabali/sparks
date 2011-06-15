@@ -68,9 +68,10 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
-          <instructions>
+         <instructions>
             <Import-Package>
               META-INF.cxf,
+              META-INF.cxf.osgi,
               *
             </Import-Package>
             <DynamicImport-Package>

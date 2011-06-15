@@ -1,0 +1,11 @@
+<features name="your-name-here">
+
+  <repository>mvn:org.apache.servicemix/apache-servicemix/${smx.version}/xml/features</repository>
+
+  <feature name="your-features" version="1.0.0">
+    <feature version="${cxf.version}">cxf</feature>
+    <feature version="${smx.version}">cxf-osgi</feature>
+    <bundle>your-bundle-uri-here</bundle>
+  </feature>
+
+</features>

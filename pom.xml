@@ -35,6 +35,7 @@
   <modules>
     <module>fuse-webinars</module>
     <module>fuse-demos</module>
+    <module>fuse-archetypes</module>
   </modules>
 
   <properties>
@@ -46,7 +47,7 @@
   </properties>
 
   <url>http://${forge-project-id}.fusesource.org</url>
-  <inceptionYear>2009</inceptionYear>
+  <inceptionYear>2011</inceptionYear>
 
   <organization>
     <name>FuseSource</name>
@@ -78,13 +79,13 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
-
+<!--
   <scm>
     <connection>scm:git://git@forge.fusesource.com/sparks.git</connection>
     <developerConnection>${release-altGitURL}</developerConnection>
     <url>http://fusesource.com/forge/git/sparks.git/</url>
   </scm>
+-->
       
   <distributionManagement>
     <site>

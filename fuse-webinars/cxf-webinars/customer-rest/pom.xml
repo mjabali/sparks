@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>cxf-webinars</artifactId>
+        <groupId>org.fusesource.sparks.fuse-webinars</groupId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+  
+    <groupId>org.fusesource.sparks.fuse-webinars.cxf-webinars</groupId>
+    <artifactId>customer-rest</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+    <name>customer-rest</name>
+  
+  
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jsr311-api-1.0</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- generate sources from XML schema -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>${basedir}/../src/main/resources/xsd</schemaDirectory>
+                    <verbose>false</verbose>
+                    <bindingDirectory>${basedir}/../src/main/resources/xsd</bindingDirectory>
+                    <extension>true</extension>
+                </configuration>
+            </plugin>
+            
+            <!-- create the bundle --> 
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.4</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
+                              META-INF.cxf,
+                              META-INF.cxf.osgi,
+                              *
+                        </Import-Package>
+                        <DynamicImport-Package>
+                              org.apache.cxf.*,
+                              org.springframework.beans.*
+                        </DynamicImport-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+  
+</project>

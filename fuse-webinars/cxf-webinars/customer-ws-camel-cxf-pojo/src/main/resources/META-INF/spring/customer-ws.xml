@@ -28,38 +28,43 @@
         http://camel.apache.org/schema/spring/camel-spring.xsd
 ">
 
-  <cxf:cxfEndpoint id="customer-ws"
-        address="http://0.0.0.0:9003/Customer"
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-http.xml"/>  
+    <import resource="classpath:META-INF/cxf/osgi/cxf-extension-osgi.xml"/>
+  
+    <cxf:cxfEndpoint id="customer-ws"
+        address="/Customer"
         endpointName="c:SOAPOverHTTP"
         serviceName="c:CustomerService"
         serviceClass="com.fusesource.demo.wsdl.customerservice.CustomerService"
         xmlns:c="http://demo.fusesource.com/wsdl/CustomerService/"/>
 
 
-  <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-    <route>
-      <from uri="cxf:bean:customer-ws"/>
-      <choice>
-        <when>
-          <simple>${in.header.operationName} == 'updateCustomer'</simple>
-          <to uri="updateCustomer"/>
-        </when>
-        <when>
-          <simple>${in.header.operationName} == 'lookupCustomer'</simple>
-          <to uri="lookupCustomer"/>
-        </when>
-        <when>
-          <simple>${in.header.operationName} == 'getCustomerStatus'</simple>
-          <to uri="getCustomerStatus"/>
-        </when>
-      </choice>
-    </route>
-  </camelContext>
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <from uri="cxf:bean:customer-ws"/>
+            <choice>
+                <when>
+                    <simple>${in.header.operationName} == 'updateCustomer'</simple>
+                    <to uri="updateCustomer"/>
+                </when>
+                <when>
+                    <simple>${in.header.operationName} == 'lookupCustomer'</simple>
+                    <to uri="lookupCustomer"/>
+                </when>
+                <when>
+                    <simple>${in.header.operationName} == 'getCustomerStatus'</simple>
+                    <to uri="getCustomerStatus"/>
+                </when>
+            </choice>
+        </route>
+    </camelContext>
 
-  <bean id="updateCustomer" class="com.fusesource.customerwscamelcxfpojo.UpdateCustomerProcessor"/>
+    <bean id="updateCustomer" class="com.fusesource.customerwscamelcxfpojo.UpdateCustomerProcessor"/>
 
-  <bean id="getCustomerStatus" class="com.fusesource.customerwscamelcxfpojo.GetCustomerStatusProcessor"/>
+    <bean id="getCustomerStatus" class="com.fusesource.customerwscamelcxfpojo.GetCustomerStatusProcessor"/>
 
-  <bean id="lookupCustomer" class="com.fusesource.customerwscamelcxfpojo.LookupCustomerProcessor"/>
+    <bean id="lookupCustomer" class="com.fusesource.customerwscamelcxfpojo.LookupCustomerProcessor"/>
     
 </beans>

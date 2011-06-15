@@ -12,10 +12,7 @@
     			<element name="id" type="string"></element>
     		</sequence>
     	</complexType>
-    	
-    <element name="Customer" type="tns:Customer"/>
+        
+        <element name="Customer" type="tns:Customer"/>
 
-    
-    
-    
 </schema>

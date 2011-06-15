@@ -28,6 +28,8 @@
   <name>Maven Archetypes from FuseSource</name>
 
   <modules>
+	<module>parent</module>
+	<module>feature-repository</module>
   </modules>
 
   <inceptionYear>2011</inceptionYear>

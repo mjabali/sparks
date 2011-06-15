@@ -34,7 +34,8 @@ public class ClientInvoker implements Runnable {
       try {
         Thread.sleep(2000);
 
-        com.fusesource.demo.customer.Customer response = customerService.lookupCustomer("1234");
+        com.fusesource.demo.customer.Customer response 
+        	= customerService.lookupCustomer("1234");
 
         log.info("Got back " + response.getFirstName() + " "
                 + response.getLastName()

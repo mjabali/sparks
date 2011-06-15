@@ -28,9 +28,15 @@
     http://camel.apache.org/schema/spring
         http://camel.apache.org/schema/spring/camel-spring.xsd
 ">
-
+    
+    
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-http.xml"/>  
+    <import resource="classpath:META-INF/cxf/osgi/cxf-extension-osgi.xml"/>
+  
     <cxf:cxfEndpoint id="customer-ws"
-        address="http://0.0.0.0:9003/Customer"
+        address="/Customer"
         endpointName="c:SOAPOverHTTP"
         serviceName="c:CustomerService"
         wsdlURL="wsdl/CustomerService.wsdl"

@@ -3,16 +3,16 @@ Export-Package: com.fusesource.test.mtom;uses:="javax.jws.soap,javax.a
  ctivation,org.apache.log4j,javax.jws,javax.xml.bind.annotation,javax.
  xml.ws,javax.xml.namespace"
 Private-Package: com.fusesource.test.mtom.v1,wsdl
-Built-By: tmielke
+Built-By: ade
 Tool: Bnd-0.0.238
 Bundle-Name: MTOM Example Service
 Created-By: Apache Maven Bundle Plugin
 Require-Bundle: org.apache.cxf.bundle
 Bundle-Vendor: FuseSource
 DynamicImport-Package: *
-Build-Jdk: 1.6.0_20
+Build-Jdk: 1.6.0_24
 Bundle-Version: 1.0.1.SNAPSHOT
-Bnd-LastModified: 1303396375381
+Bnd-LastModified: 1304607072056
 Bundle-ManifestVersion: 2
 Bundle-Description: Demos, archetypes and webinar code from the kind f
  olk at fusesource.com. Enjoy!

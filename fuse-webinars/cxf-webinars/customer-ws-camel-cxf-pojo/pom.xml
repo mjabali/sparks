@@ -24,6 +24,7 @@
 
   <groupId>org.fusesource.sparks.fuse-webinars.cxf-webinars</groupId>
   <artifactId>customer-ws-camel-cxf-pojo</artifactId>
+  
   <name>customer-ws-camel-cxf-pojo</name>
   <url>http://www.fusesource.com</url>
   <packaging>bundle</packaging>
@@ -75,7 +76,16 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
-          <instructions>
+         <instructions>
+            <Import-Package>
+              META-INF.cxf,
+              META-INF.cxf.osgi,
+              *
+            </Import-Package>
+            <DynamicImport-Package>
+              org.apache.cxf.*,
+              org.springframework.beans.*
+            </DynamicImport-Package>
           </instructions>
         </configuration>
       </plugin>

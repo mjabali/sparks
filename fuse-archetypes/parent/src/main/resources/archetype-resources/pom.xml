@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.apache.servicemix.features</groupId>
+		<artifactId>features</artifactId>
+		<version>4.3.0-fuse-03-00</version>
+	</parent>
+  
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>  
+  <version>${version}</version>
+  <name>FuseSource :: Sparks :: Fuse ESB Parent</name>
+  <description>A Fuse ESB parent project</description>
+  <packaging>pom</packaging>
+  
+  <properties>
+	<servicemix.version>4.3.0-fuse-03-00</servicemix.version>
+  </properties>
+  
+     <!-- Add FuseSource repositories for snaphots and releases -->
+   <repositories>
+        <repository>
+            <id>maven-releases</id>
+            <url>http://repo2.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <id>apache-releases</id>
+            <url>https://repository.apache.org/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>fusesource-releases</id>
+            <url>http://repo.fusesource.com/maven2</url>
+        </repository>		
+        <repository>
+            <id>java-releases</id>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>ops4j-releases</id>
+            <url>http://repository.ops4j.org/maven2</url>
+        </repository>
+        <repository>
+            <id>codehaus-releases</id>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>jboss-releases</id>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+        <repository>
+            <id>spring-releases</id>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>spring-external-releases</id>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+		
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-releases</id>
+            <url>http://repo2.maven.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>apache-releases</id>
+            <url>https://repository.apache.org/content/groups/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>codehaus-releases</id>
+            <url>http://repository.codehaus.org</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>fusesource-releases</id>
+            <url>http://repo.fusesource.com/maven2</url>
+        </pluginRepository>		
+    </pluginRepositories>
+  
+
+</project>

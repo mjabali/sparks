@@ -34,7 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     private static final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
-
     @Resource
     private WebServiceContext wsc;
     
@@ -58,10 +57,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public void updateCustomer(Customer cust) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        log.info("updating customer " + cust.getFirstName());
     }
 
     public void getCustomerStatus(String customerId, Holder<String> status, Holder<String> statusMessage) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        log.info("Getting status for customer " + customerId);
+        status.value = "Active";
+        statusMessage.value = "In the park, playing with my frisbee.";
     }
 }
