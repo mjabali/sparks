@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+<pluginRepositories>
+  <pluginRepository>
+     <id>fusesource.m2</id>
+      <name>FUSE Open Source Community Release Repository</name>
+       <url>http://repo.fusesource.com/maven2</url>
+        <snapshots>
+           <enabled>false</enabled>
+         </snapshots>
+           <releases>
+              <enabled>true</enabled>
+           </releases>
+  </pluginRepository>
+</pluginRepositories>
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>wsn-demo-cxf</artifactId>
+    <groupId>org.fusesource.sparks.fuse-demos</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>org.fusesource.sparks.fuse-demos.wsn-demo-cxf</groupId>
+  <artifactId>wsn-demo-sa</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jbi-service-assembly</packaging>
+  <name>WSN-Demo-CXF :: Service Assembly</name>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.servicemix.tooling</groupId>
+        <artifactId>jbi-maven-plugin</artifactId>
+        <version>${jbi-plugin-version}</version>
+	<extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.fusesource.sparks.fuse-demos.wsn-demo-cxf</groupId>
+      <artifactId>wsn-demo-su</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
