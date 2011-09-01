@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/osgi
+       http://www.springframework.org/schema/osgi/spring-osgi.xsd
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/cxf
+       http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="placeholderPrefix" value="#["/>
+        <property name="placeholderSuffix" value="]"/>
+        <property name="location" value="classpath:route.cfg"/>
+    </bean>
+
+    <!-- Camel Bean Routes -->
+    <bean id="file2queue" class="com.fusesource.poc.routes.FileToQueue"/>
+    <bean id="webservice2queue" class="com.fusesource.poc.routes.WebServiceToQueue"/>
+
+    <!-- POJO/Services -->
+    <bean id="feedback" class="com.fusesource.poc.pojo.Feedback"/>
+
+    <!-- WebServices -->
+    <cxf:cxfEndpoint id="wsService" address="http://localhost:9090/cxf/service"
+                  serviceClass="com.fusesource.service.Documents"/>
+
+    <camelContext trace="true" xmlns="http://camel.apache.org/schema/spring">
+
+        <routeBuilder ref="file2queue"/>
+        <routeBuilder ref="webservice2queue"/>
+
+        <endpoint id="fileUri" uri="#[fileUri]"/>
+        <endpoint id="activeMqUri" uri="#[activeMqUri]"/>
+        <endpoint id="cxfUri" uri="#[cxfUri]"/>
+
+    </camelContext>
+
+
+</beans>

@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/cxf
+       http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="placeholderPrefix" value="#["/>
+        <property name="placeholderSuffix" value="]"/>
+        <property name="location" value="classpath:route.cfg"/>
+    </bean>
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml"/>
+
+
+    <!-- webservices -->
+    <cxf:cxfEndpoint id="wsService"
+                     address="http://localhost:9090/cxf/service"
+                     serviceClass="com.fusesource.service.Documents"/>
+
+    <!-- pojos -->
+    <bean id="myProcessor" class="com.fusesource.poc.testing.MyProcessor"/>
+
+    <camel:camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route>
+           <from uri="direct:start"/>
+           <to uri="http://localhost:9090/cxf/service" />
+           <to uri="mock:result"/>
+        </route>
+
+        <route>
+           <from uri="cxf:bean:wsService"/>
+           <process ref="myProcessor"/>
+        </route>
+    </camel:camelContext>
+
+</beans>

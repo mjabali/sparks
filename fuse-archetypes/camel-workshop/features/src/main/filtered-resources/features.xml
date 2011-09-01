@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features>
+    <feature name="poc-camel-routes">
+        <feature version="${camel.version}">camel-cxf</feature>
+        <feature version="${camel.version}">camel-jms</feature>
+        <feature version='${servicemix.version}'>camel-activemq</feature>
+        <bundle>mvn:${pom.groupId}/routing/${project.version}</bundle>
+    </feature>
+</features>

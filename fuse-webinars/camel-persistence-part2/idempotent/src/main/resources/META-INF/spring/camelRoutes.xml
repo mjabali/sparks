@@ -79,7 +79,7 @@
         <constructor-arg index="1" value="FileConsumer"/>
     </bean>
 
-    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+    <camelContext id="camel" trace="true" xmlns="http://camel.apache.org/schema/spring">
 
          <dataFormats>
              <bindy type="Csv" packages="com.fusesource.webinars.persistence.model" id="csvReport"/>
