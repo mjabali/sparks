@@ -6,4 +6,5 @@
             <version>1.0</version>
             <description>Create a workable POC for Camel project for FuseSource POC Workshop</description>
         </archetype>
+     </archetypes>
 </archetype-catalog>        
