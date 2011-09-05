@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.fusesource</groupId>
     <artifactId>fusesource-pom</artifactId>
-    <version>1.5</version>
+    <version>1.7</version>
   </parent>
 
   <groupId>org.fusesource.sparks</groupId>
@@ -85,7 +85,7 @@
     <developerConnection>${release-altGitURL}</developerConnection>
     <url>http://fusesource.com/forge/git/sparks.git/</url>
   </scm>
--->
+
       
   <distributionManagement>
     <site>
@@ -94,6 +94,7 @@
       <url>dav:http://fusesource.com/forge/dav/${forge-project-id}/maven/${project.version}</url>
     </site>
   </distributionManagement> 
+-->
 
   <developers>
     <developer>

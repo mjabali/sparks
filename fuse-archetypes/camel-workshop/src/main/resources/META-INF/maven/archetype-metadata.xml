@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
+    http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="camel-workshop-archetype"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <requiredProperties>
+        <!--
+        <requiredProperty key="camel-version">
+          <defaultValue>${project.version}</defaultValue>
+        </requiredProperty>
+        -->
+    </requiredProperties>
+    <!--  -->
+    <fileSets>
+        <fileSet encoding="UTF-8">
+            <directory>src/data</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>README.txt</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <modules>
+        <module id="features" name="features" dir="features">
+            <fileSets>
+                <fileSet filtered="true" packaged="false">
+                    <directory>src/main/filtered-resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory></directory>
+                    <includes>
+                        <include>pom.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet>
+                    <excludes>
+                        <exclude>**/target/**</exclude>
+                    </excludes>
+                </fileSet>
+            </fileSets>
+        </module>
+
+        <module id="parent" name="parent" dir="parent">
+            <fileSets>
+                <fileSet>
+                    <directory></directory>
+                    <includes>
+                        <include>pom.xml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+
+        <module id="routing" name="routing" dir="routing">
+            <fileSets>
+                <fileSet>
+                    <directory></directory>
+                    <includes>
+                        <include>pom.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                        <include>**/*.wsdl</include>
+                        <include>**/*.jaxb</include>
+                        <include>**/*.cfg</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+
+        <module id="tests" name="tests" dir="tests">
+
+        </module>
+    </modules>
+
+</archetype-descriptor>

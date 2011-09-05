@@ -25,19 +25,12 @@
   
   <artifactId>fuse-archetypes</artifactId>
   <packaging>pom</packaging>
-  <name>Maven Archetypes from FuseSource</name>
+  <name>FuseSource :: Sparks :: Archetypes :: Parent Project</name>
 
   <modules>
-	<module>parent</module>
-	<module>feature-repository</module>
+	<!-- <module>parent</module>
+	<module>feature-repository</module> -->
 	<module>camel-workshop</module>
   </modules>
-
-  <inceptionYear>2011</inceptionYear>
-
-  <organization>
-    <name>FuseSource</name>
-    <url>http://fusesource.com/</url>
-  </organization> 
 
 </project>
