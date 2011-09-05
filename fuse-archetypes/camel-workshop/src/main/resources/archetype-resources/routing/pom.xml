@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>parent</artifactId>
+        <groupId>com.fusesource</groupId>
+        <version>1.0</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>
+
+    <name>FuseSource Workshop :: Camel Route</name>
+    <artifactId>routing</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <osgi-private-package>
+            com.fusesource.poc.routes;version="${project.version}",
+            com.fusesource.poc.pojo;version="${project.version}",
+            com.fusesource.service;version="${project.version}"
+        </osgi-private-package>
+        <osgi-import-package>
+            !com.fusesource.poc.routes;version="${project.version}",
+            !com.fusesource.poc.pojo;version="${project.version}",
+            !com.fusesource.service;version="${project.version}",
+            org.apache.camel;version="[2.4,3.0)",
+            org.apache.camel.builder;version="[2.4,3.0)",
+            org.apache.camel.model;version="[2.4,3.0)",
+            org.apache.camel.component.http;version="[2.4,3.0)",
+            org.apache.camel.impl;version="[2.4,3.0)",
+            org.apache.camel.spi;version="[2.4,3.0)",
+            org.apache.activemq.camel.component;version="[2.4,3.0)",
+            org.apache.camel.processor;version="[2.4,3.0)",
+            org.apache.camel.processor.aggregate;version="[2.4,3.0)",
+            *
+        </osgi-import-package>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-simple</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-spring</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+   </dependencies>
+
+    <build>
+        <plugins>
+            <!-- CXF wsdl2java generator, will plugin to the compile goal -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources-from-wsdl</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/META-INF/wsdl/service.wsdl</wsdl>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/resources/META-INF/wsdl/serializableDocument.jaxb</bindingFile>
+                                    </bindingFiles>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Camel plugin -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+                <configuration>
+                    <applicationContextUri>META-INF/spring/camel-context.xml;META-INF/activemq-config.xml
+                    </applicationContextUri>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>
