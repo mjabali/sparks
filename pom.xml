@@ -41,9 +41,7 @@
   <properties>
     <forge-project-id>isparks</forge-project-id>
     <forge-project-id-uc>SPARKS</forge-project-id-uc>
-    
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <release-altGitURL>scm:git://git@forge.fusesource.com/sparks.git</release-altGitURL>
   </properties>
 
   <url>http://${forge-project-id}.fusesource.org</url>
