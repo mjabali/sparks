@@ -1,4 +1,4 @@
-package archetype;
+package com.fusesource.poc.integration;
 
 import org.apache.felix.service.command.CommandProcessor;
 import org.apache.felix.service.command.CommandSession;
