@@ -18,9 +18,11 @@ public class FileToQueue extends RouteBuilder {
     @EndpointInject(ref = "fileUri")
     Endpoint fileEndpoint;
 
+    @EndpointInject(ref = "activeMqQueueUri")
+    Endpoint activeMqQueueEndpoint;
 
-    @EndpointInject(ref = "activeMqUri")
-    Endpoint activeMqEndpoint;
+    @EndpointInject(ref = "activeMqWSQueueUri")
+    Endpoint activeMqWSQueueEndpoint;
 
     @Override
     public void configure() throws Exception {
@@ -30,13 +32,18 @@ public class FileToQueue extends RouteBuilder {
         .id("fromFileToQueue")
         .convertBodyTo(String.class)
         .log(LoggingLevel.INFO, ">>> File received : ${body}")
-        .to(activeMqEndpoint);
+        .to(activeMqQueueEndpoint);
 
-        // Consume message from queue
-        from(activeMqEndpoint)
+        // Consume message from queue for file
+        from(activeMqQueueEndpoint)
         .id("fromQueueToLog")
         .convertBodyTo(String.class)
         .log(LoggingLevel.INFO, ">>> Message : ${body}");
+
+        // Consume message from queue for WS
+        from(activeMqWSQueueEndpoint)
+        .id("fromQueueToLog")
+        .log(LoggingLevel.INFO, ">>> Web Service Message : ${body}");
 
 
     }

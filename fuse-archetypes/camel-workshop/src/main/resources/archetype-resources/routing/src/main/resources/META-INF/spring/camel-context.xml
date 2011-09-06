@@ -38,7 +38,8 @@
         <routeBuilder ref="webservice2queue"/>
 
         <endpoint id="fileUri" uri="#[fileUri]"/>
-        <endpoint id="activeMqUri" uri="#[activeMqUri]"/>
+        <endpoint id="activeMqQueueUri" uri="#[activeMqQueueUri]"/>
+        <endpoint id="activeMqWSQueueUri" uri="#[activeMqWSQueueUri]"/>
         <endpoint id="cxfUri" uri="#[cxfUri]"/>
 
     </camelContext>

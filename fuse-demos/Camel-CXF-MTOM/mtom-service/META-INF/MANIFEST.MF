@@ -12,7 +12,7 @@ Bundle-Vendor: FuseSource
 DynamicImport-Package: *
 Build-Jdk: 1.6.0_26
 Bundle-Version: 1.0.1.SNAPSHOT
-Bnd-LastModified: 1315225531140
+Bnd-LastModified: 1315240219245
 Bundle-ManifestVersion: 2
 Bundle-Description: Demos, archetypes and webinar code from the kind f
  olk at fusesource.com. Enjoy!

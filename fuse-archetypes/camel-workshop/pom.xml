@@ -1,34 +1,43 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.fusesource.sparks.archetypes</groupId>
-  <artifactId>camel-wks-archetype</artifactId>
-  <name>FuseSource :: Sparks :: Archetype : Camel project</name>
-  <description>Creates a new Camel project using Java DSL, exposing a webservice and using a ActiveMq.
-      The project can run locally using camel:run or deployed on Fuse ESB</description>
-  <packaging>maven-archetype</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+    <parent>
+        <groupId>org.fusesource.sparks</groupId>
+        <artifactId>fuse-archetypes</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
 
-  <build>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.archetype</groupId>
-        <artifactId>archetype-packaging</artifactId>
-        <version>2.1</version>
-      </extension>
-    </extensions>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-archetype-plugin</artifactId>
-          <version>2.1</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <groupId>org.fusesource.sparks.archetypes</groupId>
+    <artifactId>camel-wks-archetype</artifactId>
+    <name>FuseSource :: Sparks :: Archetype : Camel project</name>
+    <description>Creates a new Camel project using Java DSL, exposing a webservice and using a ActiveMq.
+        The project can run locally using camel:run or deployed on Fuse ESB
+    </description>
+    <packaging>maven-archetype</packaging>
+    <version>1.0.1-SNAPSHOT</version>
 
-  </build>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>2.1</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
 
 </project>

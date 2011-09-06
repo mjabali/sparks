@@ -83,24 +83,28 @@
     <developerConnection>${release-altGitURL}</developerConnection>
     <url>http://fusesource.com/forge/git/sparks.git/</url>
   </scm>
-
+ -->
       
   <distributionManagement>
-    <site>
-      <id>sparks.fusesource.org</id>
-      <name>sparks</name>
-      <url>dav:http://fusesource.com/forge/dav/${forge-project-id}/maven/${project.version}</url>
-    </site>
-  </distributionManagement> 
--->
+   <repository>
+     <id>fusesource-nexus-subscriber</id>
+     <name>Fusesource Nexus Subscriber</name>
+     <url>http://repo.fusesource.com/nexus/content/repositories/subscriber</url>
+   </repository>
+   <snapshotRepository>
+     <id>fusesource-nexus-subscriber-snapshot</id>
+     <name>Fusesource Nexus Subscriber Snapshot</name>
+     <url>http://repo.fusesource.com/nexus/content/repositories/subscriber-snapshot</url>
+   </snapshotRepository>
+  </distributionManagement>
 
   <developers>
     <developer>
-      <id>trenaman</id>
-      <name>Adrian Trenaman</name>
-      <email>trenaman@fusesource.com</email>
-      <url>http://trenaman.blogspot.com</url>
-      <timezone>GMT</timezone>
+      <id>cmoulliard</id>
+      <name>Charles Moulliard</name>
+      <email>cmoulliard@fusesource.com</email>
+      <url>http://cmoulliard.blogspot.com</url>
+      <timezone>GMT+1</timezone>
     </developer>
     <developer>
       <id>tmielke</id>

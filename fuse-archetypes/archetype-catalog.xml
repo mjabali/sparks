@@ -1,0 +1,10 @@
+<archetype-catalog>
+    <archetypes>
+        <archetype>
+            <groupId>org.fusesource.sparks.archetypes</groupId>
+            <artifactId>camel-wks-archetype</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <description>Create a workable POC for Camel project for FuseSource POC Workshop</description>
+        </archetype>
+    </archetypes>
+</archetype-catalog>

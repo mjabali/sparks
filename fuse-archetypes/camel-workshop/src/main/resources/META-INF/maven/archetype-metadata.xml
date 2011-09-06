@@ -14,7 +14,7 @@
     <!--  -->
     <fileSets>
         <fileSet encoding="UTF-8">
-            <directory>src/data</directory>
+            <directory></directory>
             <includes>
                 <include>pom.xml</include>
             </includes>

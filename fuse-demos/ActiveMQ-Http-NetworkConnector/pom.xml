@@ -16,8 +16,14 @@
   -->
 
 <project>
+
+    <parent>
+    <groupId>org.fusesource.sparks</groupId>
+    <artifactId>fuse-demos</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+   </parent>
+
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.fusesource.support</groupId>
     <artifactId>http-reconnect-test</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>Broker HTTP Proxy Test</name>

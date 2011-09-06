@@ -18,8 +18,8 @@ public class WebServiceToQueue extends RouteBuilder {
     Endpoint cxfEndpoint;
 
 
-    @EndpointInject(ref = "activeMqUri")
-    Endpoint activeMqEndpoint;
+    @EndpointInject(ref = "activeMqWSQueueUri")
+    Endpoint activeMqWSQueueEndpoint;
 
     @Override
     public void configure() throws Exception {
@@ -28,7 +28,7 @@ public class WebServiceToQueue extends RouteBuilder {
         from(cxfEndpoint)
         .id("fromWebServiceToQueueWithFeedback")
         .log(LoggingLevel.INFO, ">>> WebService called : ${body}")
-        .inOnly(activeMqEndpoint)
+        .inOnly(activeMqWSQueueEndpoint)
         .beanRef("feedback");
 
     }
