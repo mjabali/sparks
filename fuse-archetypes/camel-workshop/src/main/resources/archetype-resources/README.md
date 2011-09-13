@@ -53,6 +53,7 @@ b) Deploy in Fuse ESB 4.4-fuse-00-43
 
 + Clean the /etc/org.apache.karaf.features.cfg file
 
+````
     #
     # Comma separated list of features repositories to register by default
     #
@@ -62,7 +63,7 @@ b) Deploy in Fuse ESB 4.4-fuse-00-43
     # Comma separated list of features to install at startup
     #
     featuresBoot=karaf-framework,config
-
+````
 
 + Install features file
     features:install mvn:com.fusesource.workshop/features/1.0/xml/features
@@ -80,6 +81,7 @@ FILE
 
 * Check the result in the log
 
+````
     14:03:49,794 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> File received : 999
     14:03:50,000 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> DocumentId created
     14:03:50,187 | INFO  | usesource-input] | fromQueueToLog                   | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> DocumentResponse created
@@ -91,12 +93,14 @@ FILE
         <details>This is a big incident</details>
         <email>info@fusesource.com</email>
     </ns2:documentResponse>
+````
 
 WEBSERVICE
 
 * Create a project in SOAPUI pointing to the following wsdl --> http://localhost:9090/cxf/service?wsdl
 * Send the following request
 
+````xml
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.fusesource.com">
        <soapenv:Header/>
        <soapenv:Body>
@@ -105,9 +109,11 @@ WEBSERVICE
           </ser:documentId>
        </soapenv:Body>
     </soapenv:Envelope>
+````
 
 * Get this response
 
+````xml
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
        <soap:Body>
           <ns2:documentResponse xmlns:ns2="http://service.fusesource.com">
@@ -119,14 +125,14 @@ WEBSERVICE
           </ns2:documentResponse>
        </soap:Body>
     </soap:Envelope>
-
+````
 * Check the log
 
-```14:05:17,454 | INFO  | er[fusesource-ws | fromQueueToPoJo                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> Web Service Message : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+````
+    14:05:17,454 | INFO  | er[fusesource-ws | fromQueueToPoJo                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> Web Service Message : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <ns2:documentId xmlns:ns2="http://service.fusesource.com">
         <id>999</id>
     </ns2:documentId>
-
     14:05:18,474 | INFO  | tenerContainer-1 | fromWebServiceToQueue            | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> WebService called and incident created : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <ns2:documentResponse xmlns:ns2="http://service.fusesource.com">
         <incidentId>999</incidentId>
@@ -135,5 +141,5 @@ WEBSERVICE
         <details>This is a big incident</details>
         <email>info@fusesource.com</email>
     </ns2:documentResponse>
-```
+````
 
