@@ -53,6 +53,7 @@ b) Deploy in Fuse ESB 4.4-fuse-00-43
 
 * Clean the /etc/org.apache.karaf.features.cfg file
 
+{code}
 #
 # Comma separated list of features repositories to register by default
 #
@@ -62,6 +63,7 @@ featuresRepositories=mvn:org.apache.karaf.assemblies.features/standard/2.2.0-fus
 # Comma separated list of features to install at startup
 #
 featuresBoot=karaf-framework,config
+{code}
 
 * Install features file
 features:install mvn:com.fusesource.workshop/features/1.0/xml/features
