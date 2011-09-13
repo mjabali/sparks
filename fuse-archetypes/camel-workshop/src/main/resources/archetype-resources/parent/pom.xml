@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fusesource</groupId>
+    <groupId>${groupId}</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0</version>
+    <version>${version}</version>
     <name>FuseSource Workshop :: Parent</name>
     <packaging>pom</packaging>
 
@@ -26,10 +26,11 @@
         <karaf.version>2.2.0-fuse-00-43</karaf.version>
 
         <!-- Others -->
-        <spring.version>3.0.3.RELEASE</spring.version>
+        <spring.version>3.0.5.RELEASE</spring.version>
         <felix.version>3.0.6</felix.version>
         <log4j.version>1.2.16</log4j.version>
         <slf4j.version>1.6.1</slf4j.version>
+        <commons-lang>2.6</commons-lang>
 
         <junit.version>4.5</junit.version>
 
@@ -56,14 +57,21 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-cxf</artifactId>
+            <artifactId>camel-jms</artifactId>
             <version>${camel.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-camel</artifactId>
-            <version>${activemq.version}</version>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+            <version>${camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
+        <!-- cxf -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-simple</artifactId>
@@ -85,16 +93,29 @@
             <version>${cxf.version}</version>
         </dependency>
 
-        <!-- Log -->
+         <!--  ActiveMQ -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Pax-Exam dependencies -->
@@ -102,21 +123,32 @@
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam</artifactId>
             <version>${pax-exam-version}</version>
+            <!-- <scope>test</scope> -->
         </dependency>
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-junit</artifactId>
             <version>${pax-exam-version}</version>
+            <!-- <scope>test</scope> -->
         </dependency>
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-container-default</artifactId>
             <version>${pax-exam-version}</version>
+            <!-- <scope>test</scope> -->
         </dependency>
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-junit-extender-impl</artifactId>
             <version>${pax-exam-version}</version>
+            <!-- <scope>test</scope> -->
+        </dependency>
+
+        <!-- Other -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang}</version>
         </dependency>
 
         <!-- Apache Karaf integration -->

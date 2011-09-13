@@ -20,8 +20,4 @@
     <property name="brokerURL" value="tcp://localhost:61616"/>
   </bean>
 
-  <!-- not used but required by camel plugin
-  <camelContext trace="true" xmlns="http://camel.apache.org/schema/spring"/>
-   -->
-
 </beans>

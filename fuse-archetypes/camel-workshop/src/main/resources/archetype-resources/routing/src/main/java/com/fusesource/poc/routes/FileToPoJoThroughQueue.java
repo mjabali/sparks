@@ -1,9 +1,9 @@
 package com.fusesource.poc.routes;
 
 import org.apache.camel.Endpoint;
-import org.apache.camel.LoggingLevel;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +12,7 @@ import org.apache.camel.builder.RouteBuilder;
  * Time: 10:35
  * To change this template use File | Settings | File Templates.
  */
-public class FileToQueue extends RouteBuilder {
+public class FileToPoJoThroughQueue extends RouteBuilder {
 
 
     @EndpointInject(ref = "fileUri")
@@ -21,29 +21,28 @@ public class FileToQueue extends RouteBuilder {
     @EndpointInject(ref = "activeMqQueueUri")
     Endpoint activeMqQueueEndpoint;
 
-    @EndpointInject(ref = "activeMqWSQueueUri")
-    Endpoint activeMqWSQueueEndpoint;
-
     @Override
     public void configure() throws Exception {
+
+        JaxbDataFormat jaxb = new JaxbDataFormat("com.fusesource.service");
 
         // Consume file and sending it to a Queue
         from(fileEndpoint)
         .id("fromFileToQueue")
         .convertBodyTo(String.class)
-        .log(LoggingLevel.INFO, ">>> File received : ${body}")
+        .log(">>> File received : ${body}")
+        .beanRef("feedback", "createRequest")
+        .log(">>> DocumentId created")
         .to(activeMqQueueEndpoint);
 
-        // Consume message from queue for file
+        // Consume message from queue for file and log info
         from(activeMqQueueEndpoint)
         .id("fromQueueToLog")
+        .beanRef("feedback", "clientReply")
+        .log(">>> DocumentResponse created")
+        .marshal(jaxb)
         .convertBodyTo(String.class)
-        .log(LoggingLevel.INFO, ">>> Message : ${body}");
-
-        // Consume message from queue for WS
-        from(activeMqWSQueueEndpoint)
-        .id("fromQueueToLog")
-        .log(LoggingLevel.INFO, ">>> Web Service Message : ${body}");
+        .log(">>> Incident created : ${body}");
 
 
     }

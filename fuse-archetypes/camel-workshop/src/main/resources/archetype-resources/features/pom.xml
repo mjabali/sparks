@@ -5,15 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.fusesource</groupId>
+        <groupId>${groupId}</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0</version>
+        <version>${version}</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.fusesource</groupId>
     <artifactId>features</artifactId>
-    <version>1.0</version>
     <name>FuseSource Workshop :: Features</name>
 
     <packaging>pom</packaging>

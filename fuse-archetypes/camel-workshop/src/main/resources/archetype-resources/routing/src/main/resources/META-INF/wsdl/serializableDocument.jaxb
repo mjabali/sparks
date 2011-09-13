@@ -2,12 +2,15 @@
 	        xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
 	        xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	        xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
-	        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	        xmlns:xjc= "http://java.sun.com/xml/ns/jaxb/xjc"
+	        jxb:extensionBindingPrefixes="xjc">
 	        <jaxws:bindings
 	                node="wsdl:definitions/wsdl:types/xsd:schema[@targetNamespace='http://service.fusesource.com']">
 	                <jxb:globalBindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
 	                        xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	                        <jxb:serializable/>
+	                        <xjc:simple/>
 	                </jxb:globalBindings>
 	        </jaxws:bindings>
 </jaxws:bindings>

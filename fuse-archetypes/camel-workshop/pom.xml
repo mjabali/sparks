@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.fusesource.sparks</groupId>
         <artifactId>fuse-archetypes</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
 
@@ -17,7 +17,7 @@
         The project can run locally using camel:run or deployed on Fuse ESB
     </description>
     <packaging>maven-archetype</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
     <build>
         <extensions>

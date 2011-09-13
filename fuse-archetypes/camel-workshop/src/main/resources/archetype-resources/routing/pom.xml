@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>parent</artifactId>
-        <groupId>com.fusesource</groupId>
-        <version>1.0</version>
+        <groupId>${groupId}</groupId>
+        <version>${version}</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
@@ -16,28 +16,34 @@
 
     <properties>
         <osgi-private-package>
-            com.fusesource.poc.routes;version="${project.version}",
-            com.fusesource.poc.pojo;version="${project.version}",
-            com.fusesource.service;version="${project.version}"
+            com.fusesource.poc.routes;version="1.0",
+            com.fusesource.poc.pojo;version="1.0",
+            com.fusesource.service;version="1.0"
         </osgi-private-package>
         <osgi-import-package>
-            !com.fusesource.poc.routes;version="${project.version}",
-            !com.fusesource.poc.pojo;version="${project.version}",
-            !com.fusesource.service;version="${project.version}",
+            !com.fusesource.poc.routes;version="1.0",
+            !com.fusesource.poc.pojo;version="1.0",
+            !com.fusesource.service;version="1.0",
+            META-INF.cxf,
+            META-INF.cxf.osgi,
             org.apache.camel;version="[2.4,3.0)",
             org.apache.camel.builder;version="[2.4,3.0)",
             org.apache.camel.model;version="[2.4,3.0)",
-            org.apache.camel.component.http;version="[2.4,3.0)",
             org.apache.camel.impl;version="[2.4,3.0)",
             org.apache.camel.spi;version="[2.4,3.0)",
-            org.apache.activemq.camel.component;version="[2.4,3.0)",
+            org.apache.activemq.camel.component;version="[5.4,6.0)",
             org.apache.camel.processor;version="[2.4,3.0)",
-            org.apache.camel.processor.aggregate;version="[2.4,3.0)",
             *
         </osgi-import-package>
+        <osgi-dynamic-package>
+              org.apache.cxf.*,
+              org.springframework.beans.*
+        </osgi-dynamic-package>
     </properties>
 
     <dependencies>
+
+        <!-- CXF -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-simple</artifactId>
@@ -63,7 +69,84 @@
             <artifactId>xbean-spring</artifactId>
             <version>${xbean.version}</version>
         </dependency>
-   </dependencies>
+
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
+        <!--  ActiveMQ -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Other -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang}</version>
+        </dependency>
+
+
+    </dependencies>
 
     <build>
         <plugins>
@@ -82,8 +165,14 @@
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/resources/META-INF/wsdl/service.wsdl</wsdl>
                                     <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/resources/META-INF/wsdl/serializableDocument.jaxb</bindingFile>
+                                        <bindingFile>
+                                            ${basedir}/src/main/resources/META-INF/wsdl/serializableDocument.jaxb
+                                        </bindingFile>
                                     </bindingFiles>
+                                    <extraargs>
+                                        <!-- Option generating toString -->
+                                        <extraarg>-xjc-Xts</extraarg>
+                                    </extraargs>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
@@ -92,6 +181,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf.xjcplugins</groupId>
+                        <artifactId>cxf-xjc-ts</artifactId>
+                        <version>2.4.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <!-- Camel plugin -->
@@ -100,8 +196,7 @@
                 <artifactId>camel-maven-plugin</artifactId>
                 <version>${camel.version}</version>
                 <configuration>
-                    <applicationContextUri>META-INF/spring/camel-context.xml;META-INF/activemq-config.xml
-                    </applicationContextUri>
+                    <applicationContextUri>META-INF/spring/camel-context.xml;META-INF/activemq-config.xml</applicationContextUri>
                 </configuration>
             </plugin>
         </plugins>

@@ -22,8 +22,8 @@
     </bean>
 
     <!-- Camel Bean Routes -->
-    <bean id="file2queue" class="com.fusesource.poc.routes.FileToQueue"/>
-    <bean id="webservice2queue" class="com.fusesource.poc.routes.WebServiceToQueue"/>
+    <bean id="file2queue" class="com.fusesource.poc.routes.FileToPoJoThroughQueue"/>
+    <bean id="webservice2queue" class="com.fusesource.poc.routes.WebServiceToPojoThroughQueue"/>
 
     <!-- POJO/Services -->
     <bean id="feedback" class="com.fusesource.poc.pojo.Feedback"/>
@@ -32,7 +32,7 @@
     <cxf:cxfEndpoint id="wsService" address="http://localhost:9090/cxf/service"
                   serviceClass="com.fusesource.service.Documents"/>
 
-    <camelContext trace="true" xmlns="http://camel.apache.org/schema/spring">
+    <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
 
         <routeBuilder ref="file2queue"/>
         <routeBuilder ref="webservice2queue"/>

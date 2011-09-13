@@ -15,7 +15,7 @@
             </xs:complexType>
 
             <xs:element name="documentResponse" type="tns:documentResponse"/>
-            <xs:complexType name="documentResponse">
+            <xs:complexType name="documentResponse" >
                 <xs:sequence>
                     <xs:element type="xs:string" name="incidentId"/>
                     <xs:element type="xs:string" name="incidentDate"/>

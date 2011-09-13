@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring
+       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+  <!--
+
+   <bean id="redeliveryPolicy" class="org.apache.camel.processor.RedeliveryPolicy">
+        <property name="maximumRedeliveries" value="0"/>
+        <property name="redeliveryDelay" value="0"/>
+        <property name="logStackTrace" value="false"/>
+    </bean>
+
+    <bean id="errorHandler" class="org.apache.camel.spring.spi.TransactionErrorHandlerBuilder">
+        <property name="springTransactionPolicy" ref="PROPAGATION_REQUIRED"/>
+        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
+    </bean>
+
+    <bean id="poolConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="maxConnections" value="8"/>
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="vm://localhost?broker.persistent=false"/>
+    </bean>
+
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="poolConnectionFactory"/>
+    </bean>
+
+    <bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="poolConnectionFactory"/>
+        <property name="transactionManager" ref="jmsTransactionManager"/>
+        <property name="transacted" value="true"/>
+        <property name="concurrentConsumers" value="1"/>
+    </bean>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
+
+    <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="jmsTransactionManager"/>
+    </bean>
+
+    <bean id="forced" class="java.lang.IllegalArgumentException">
+        <constructor-arg index="0" value="Forced"/>
+    </bean>
+
+
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <onException>
+            <exception>java.lang.IllegalArgumentException</exception>
+            <handled>
+                <constant>true</constant>
+            </handled>
+            <log message=">> Exception thrown and intercepted"/>
+            <throwException ref="forced"/>
+            <to uri="file://exception/"/>
+            <log message=">> Exception logged"/>
+            <rollback markRollbackOnly="true"/>
+        </onException>
+
+        <route id="timerToJMS">
+            <from uri="timer:///test?fixedRate=true&amp;period=60000"/>
+            <setBody>
+                <constant>This is a test message !</constant>
+            </setBody>
+            <to uri="activemq:queue:fuse-workshop"/>
+        </route>
+
+        <route id="jmsToException" errorHandlerRef="errorHandler">
+            <from uri="activemq:queue:fuse-workshop"/>
+            <transacted ref="PROPAGATION_REQUIRED"/>
+            <log message=">> Before throwing exception."/>
+            <throwException ref="forced"/>
+        </route>
+
+    </camelContext>
+-->
+</beans>

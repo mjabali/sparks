@@ -1,7 +1,6 @@
 package com.fusesource.poc.routes;
 
 import org.apache.camel.Endpoint;
-import org.apache.camel.LoggingLevel;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.builder.RouteBuilder;
 
@@ -12,7 +11,7 @@ import org.apache.camel.builder.RouteBuilder;
  * Time: 09:16
  * To change this template use File | Settings | File Templates.
  */
-public class WebServiceToQueue extends RouteBuilder {
+public class WebServiceToPojoThroughQueue extends RouteBuilder {
 
     @EndpointInject(ref = "cxfUri")
     Endpoint cxfEndpoint;
@@ -24,12 +23,19 @@ public class WebServiceToQueue extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        // From WebService to Queue and reply to client
+        // From WebService to PoJo
         from(cxfEndpoint)
-        .id("fromWebServiceToQueueWithFeedback")
-        .log(LoggingLevel.INFO, ">>> WebService called : ${body}")
-        .inOnly(activeMqWSQueueEndpoint)
-        .beanRef("feedback");
+        .id("fromWebServiceToQueue")
+        .convertBodyTo(com.fusesource.service.DocumentId.class)
+        .inOut(activeMqWSQueueEndpoint)
+        .log(">>> WebService called and incident created : ${body}");
+
+        // Consume message from WS queue for Web Service
+        from(activeMqWSQueueEndpoint)
+        .id("fromQueueToPoJo")
+        .log(">>> Web Service Message : ${body}")
+        .transform()
+                .method("feedback","clientReply");
 
     }
 

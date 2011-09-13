@@ -4,12 +4,12 @@
     <parent>
         <artifactId>cxf-webinars</artifactId>
         <groupId>org.fusesource.sparks.fuse-webinars</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
   
     <groupId>org.fusesource.sparks.fuse-webinars.cxf-webinars</groupId>
     <artifactId>customer-rest</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>customer-rest</name>
   

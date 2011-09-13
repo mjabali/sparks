@@ -5,11 +5,7 @@
         xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <requiredProperties>
-        <!--
-        <requiredProperty key="camel-version">
-          <defaultValue>${project.version}</defaultValue>
-        </requiredProperty>
-        -->
+        <!-- <requiredProperty key="project-version"><defaultValue>1.0</defaultValue></requiredProperty> -->
     </requiredProperties>
     <!--  -->
     <fileSets>
@@ -82,6 +78,25 @@
                     <directory>src/main/java</directory>
                     <includes>
                         <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <!-- Testing directories -->
+                <fileSet encoding="UTF-8">
+                    <directory>src/test/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>src/test/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="false" encoding="UTF-8">
+                    <directory>src/test/data</directory>
+                    <includes>
+                        <include>**/*.txt</include>
                     </includes>
                 </fileSet>
             </fileSets>
