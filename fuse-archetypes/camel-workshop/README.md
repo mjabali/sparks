@@ -7,7 +7,7 @@ to develop a POC. More info can be find here about the project - https://github.
 
 ## How to use it
 
-- Simply execute the following command in a shell environement
+- Simply execute the following command in a shell environment
 
 mvn archetype:generate -DarchetypeGroupId=org.fusesource.sparks.archetypes -DarchetypeArtifactId=camel-wks-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=com.fusesource.workshop -DartifactId=poc -Dversion=1.0
 
