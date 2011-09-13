@@ -46,7 +46,7 @@ and extend it).
 
 a) Standalone mode
 
-* Execute the following command within routes module
+* Execute the following command within routing module
 
     mvn camel:run
 
