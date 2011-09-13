@@ -66,9 +66,11 @@ b) Deploy in Fuse ESB 4.4-fuse-00-43
 ````
 
 * Install features file
+
     features:install mvn:com.fusesource.workshop/features/1.0/xml/features
 
 * Install Poc camel routes
+
     features:install poc-camel-routes
 
 ## Test it
