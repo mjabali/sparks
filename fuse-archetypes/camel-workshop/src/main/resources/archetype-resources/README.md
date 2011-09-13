@@ -1,11 +1,10 @@
-FUSESOURCE POC WORKSHOP PROJECT - V1.0
-**************************************
+# FUSESOURCE POC WORKSHOP PROJECT - V1.0
 
 Author : Charles Moulliard
 Created : 12/09/2011
 
-Introduction
-************
+## Introduction
+
 The goal of this project is to provide in a maven project structure the archetypes required to build camel routes, test them and deploy the project
 in Fuse ESB or simply runs the camel routes locally. The project exposes 4 Camel routes :
 
@@ -26,28 +25,24 @@ The routes have been defined using Java DSL but the definition of the camel endp
 The project can be extended using Spring DSL and Transactional Camel routes can be developed. The camel-context-tx.xml will be used for that purpose (remove the comments
 and extend it).
 
-1. Pre-requisite
-****************
-- Maven 3.0.x
-- JDK 6, 7
-- SOAP UI
+## Pre-requisite
 
-2. Maven Modules
-****************
+* Maven 3.0.x
+* JDK 6, 7
+* SOAP UI
 
-- parent : contain dependencies, properties definitions and common maven plugins used by the other maven module
-- routes : camel routes with unit test.
-- features : features file
-- tests : integration tests (OSGI)
+## Maven Modules
 
-3. Build
-********
+* parent : contain dependencies, properties definitions and common maven plugins used by the other maven module
+* routes : camel routes with unit test.
+* features : features file
+* tests : integration tests (OSGI)
+
+## Build
 
 mvn clean install
 
-
-4. Launch Camel
-***************
+## Launch Camel
 
 a) Standalone mode
 
@@ -56,7 +51,7 @@ mvn camel:run
 
 b) Deploy in Fuse ESB 4.4-fuse-00-43
 
-- Clean the /etc/org.apache.karaf.features.cfg file
+* Clean the /etc/org.apache.karaf.features.cfg file
 
 #
 # Comma separated list of features repositories to register by default
@@ -68,22 +63,21 @@ featuresRepositories=mvn:org.apache.karaf.assemblies.features/standard/2.2.0-fus
 #
 featuresBoot=karaf-framework,config
 
-- Install features file
+* Install features file
 features:install mvn:com.fusesource.workshop/features/1.0/xml/features
 
-Install Poc camel routes
-- features:install poc-camel-routes
+* Install Poc camel routes
+features:install poc-camel-routes
 
-5. Test it
-**********
+## Test it
 
 FILE
 
-- Copy the file test/data/incidentId.txt into the directory fusesource/data
+* Copy the file test/data/incidentId.txt into the directory fusesource/data
 
 e.g. cp /Users/charlesmoulliard/Fuse/sparks/fuse-archetypes/camel-workshop/src/main/resources/archetype-resources/routing/src/test/data/incidentId.txt /Users/charlesmoulliard/tmp/poc/routing/fusesource/data/
 
-- Check the result in the log
+* Check the result in the log
 
 14:03:49,794 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> File received : 999
 14:03:50,000 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> DocumentId created
@@ -99,8 +93,8 @@ e.g. cp /Users/charlesmoulliard/Fuse/sparks/fuse-archetypes/camel-workshop/src/m
 
 WEBSERVICE
 
-- Create a project in SOAPUI pointing to the following wsdl --> http://localhost:9090/cxf/service?wsdl
-- Send the following request
+* Create a project in SOAPUI pointing to the following wsdl --> http://localhost:9090/cxf/service?wsdl
+* Send the following request
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.fusesource.com">
    <soapenv:Header/>
@@ -111,7 +105,7 @@ WEBSERVICE
    </soapenv:Body>
 </soapenv:Envelope>
 
-- Get this response
+* Get this response
 
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
@@ -125,7 +119,7 @@ WEBSERVICE
    </soap:Body>
 </soap:Envelope>
 
-- Check the log
+* Check the log
 
 14:05:17,454 | INFO  | er[fusesource-ws | fromQueueToPoJo                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> Web Service Message : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:documentId xmlns:ns2="http://service.fusesource.com">
