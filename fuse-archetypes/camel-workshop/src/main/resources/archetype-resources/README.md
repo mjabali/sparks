@@ -122,7 +122,7 @@ WEBSERVICE
 
 * Check the log
 
-    14:05:17,454 | INFO  | er[fusesource-ws | fromQueueToPoJo                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> Web Service Message : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+```14:05:17,454 | INFO  | er[fusesource-ws | fromQueueToPoJo                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> Web Service Message : <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <ns2:documentId xmlns:ns2="http://service.fusesource.com">
         <id>999</id>
     </ns2:documentId>
@@ -135,5 +135,5 @@ WEBSERVICE
         <details>This is a big incident</details>
         <email>info@fusesource.com</email>
     </ns2:documentResponse>
-
+```
 
