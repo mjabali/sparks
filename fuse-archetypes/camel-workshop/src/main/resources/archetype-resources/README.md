@@ -40,20 +40,21 @@ and extend it).
 
 ## Build
 
-mvn clean install
+    mvn clean install
 
 ## Launch Camel
 
 a) Standalone mode
 
 * Execute the following command within routes module
+
     mvn camel:run
 
 b) Deploy in Fuse ESB 4.4-fuse-00-43
 
 * Change the content of the /etc/org.apache.karaf.features.cfg file like defined hereafter
 
-````
+````text
     #
     # Comma separated list of features repositories to register by default
     #
@@ -79,11 +80,13 @@ FILE
 
 * Copy the file test/data/incidentId.txt into the directory fusesource/data
 
+````text
     e.g. cp /Users/charlesmoulliard/Fuse/sparks/fuse-archetypes/camel-workshop/src/main/resources/archetype-resources/routing/src/test/data/incidentId.txt /Users/charlesmoulliard/tmp/poc/routing/fusesource/data/
+````
 
 * Check the result in the log
 
-````
+````text
     14:03:49,794 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> File received : 999
     14:03:50,000 | INFO  | fusesource/data/ | fromFileToQueue                  | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> DocumentId created
     14:03:50,187 | INFO  | usesource-input] | fromQueueToLog                   | ?                                   ? | 54 - org.apache.camel.camel-core - 2.7.1.fuse-00-43 | >>> DocumentResponse created
