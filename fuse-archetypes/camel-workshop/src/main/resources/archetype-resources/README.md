@@ -46,12 +46,12 @@ mvn clean install
 
 a) Standalone mode
 
-+ Execute the following command within routes module
+* Execute the following command within routes module
     mvn camel:run
 
 b) Deploy in Fuse ESB 4.4-fuse-00-43
 
-+ Clean the /etc/org.apache.karaf.features.cfg file
+* Change the content of the /etc/org.apache.karaf.features.cfg file like defined hereafter
 
 ````
     #
@@ -65,10 +65,10 @@ b) Deploy in Fuse ESB 4.4-fuse-00-43
     featuresBoot=karaf-framework,config
 ````
 
-+ Install features file
+* Install features file
     features:install mvn:com.fusesource.workshop/features/1.0/xml/features
 
-+ Install Poc camel routes
+* Install Poc camel routes
     features:install poc-camel-routes
 
 ## Test it
